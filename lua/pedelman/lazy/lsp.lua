@@ -1,7 +1,6 @@
 return {
     {
         'VonHeikemen/lsp-zero.nvim',
-        release = 'v3.x',
         lazy = true,
         config = false,
     },
@@ -16,7 +15,6 @@ return {
         dependencies = {
             {
                 'L3MON4D3/LuaSnip',
-                release = "v2.*",
                 build = "make install_jsregexp",
                 dependencies = {
                     "rafamadriz/friendly-snippets",
