@@ -116,7 +116,7 @@ return {
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    "lua_ls", "gopls"
+                    "lua_ls", "gopls", "terraformls"
                 },
                 handlers = {
                     function(server_name)
@@ -130,6 +130,10 @@ return {
 
                     gopls = function()
                         lspconfig.gopls.setup({})
+                    end,
+
+                    terraformls = function()
+                        lspconfig.terraformls.setup({})
                     end,
                 }
             })
