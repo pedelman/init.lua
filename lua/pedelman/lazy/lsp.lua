@@ -14,6 +14,7 @@ return {
         event = 'InsertEnter',
         dependencies = {
             {
+                "hrsh7th/cmp-buffer",
                 'L3MON4D3/LuaSnip',
                 build = "make install_jsregexp",
                 dependencies = {
@@ -47,6 +48,7 @@ return {
                     ['<Tab>'] = cmp.mapping.confirm({select = false}),
                 }),
                 sources = {
+                    { name = 'buffer' },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                 },
@@ -61,7 +63,7 @@ return {
         ft = { "scala", "sbt", "java" },
         opts = function()
             local metals_config = require("metals").bare_config()
-            metals_config.on_attach = function(client, bufnr)
+            metals_config.on_attach = function(_, bufnr)
                 local opts = {buffer = bufnr, remap = false}
 
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
