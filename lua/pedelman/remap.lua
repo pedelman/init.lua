@@ -1,11 +1,8 @@
-
 vim.g.mapleader = "\\"
 
 vim.keymap.set("", "<CR>", ":noh <CR>")
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>o", vim.cmd.NvimTreeOpen)
-vim.keymap.set("n", "<leader>I", vim.cmd.PackerSync)
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
