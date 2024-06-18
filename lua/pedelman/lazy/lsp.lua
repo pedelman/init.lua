@@ -14,13 +14,15 @@ return {
         event = 'InsertEnter',
         dependencies = {
             {
-                "hrsh7th/cmp-buffer",
                 'L3MON4D3/LuaSnip',
-                build = "make install_jsregexp",
                 dependencies = {
-                    "rafamadriz/friendly-snippets",
-                    "saadparwaiz1/cmp_luasnip",
+                    'hrsh7th/cmp-buffer',
+                    'rafamadriz/friendly-snippets',
+                    'saadparwaiz1/cmp_luasnip',
                 },
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                end,
             },
         },
         config = function()
@@ -32,8 +34,27 @@ return {
             local cmp = require('cmp')
             local luasnip = require("luasnip")
 
-            vim.keymap.set({"i", "s"}, "<Tab>", function() luasnip.jump( 1) end, {silent = true})
-            vim.keymap.set({"i", "s"}, "<S-Tab>", function() luasnip.jump(-1) end, {silent = true})
+            vim.keymap.set({"i", "s"}, "<Tab>", function()
+                if luasnip.choice_active() then
+                    return "<cmd>lua require'luasnip'.jump(1)<Cr>"
+                else
+                    return "<Tab>"
+                end
+            end, {
+                silent = true,
+                expr = true
+            })
+
+            vim.keymap.set({"i", "s"}, "<S-Tab>", function()
+                if luasnip.choice_active() then
+                    return "<cmd>lua require'luasnip'.jump(-1)<Cr>"
+                else
+                    return "<S-Tab>"
+                end
+            end, {
+                silent = true,
+                expr = true
+            })
 
             cmp.setup({
                 completion = {
@@ -49,8 +70,8 @@ return {
                 }),
                 sources = {
                     { name = 'buffer' },
-                    { name = 'nvim_lsp' },
                     { name = 'luasnip' },
+                    { name = 'nvim_lsp' },
                 },
             })
         end
@@ -112,7 +133,6 @@ return {
             end)
 
             local lspconfig = require('lspconfig')
-            require("luasnip.loaders.from_vscode").lazy_load()
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
