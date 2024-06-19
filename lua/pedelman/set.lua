@@ -1,8 +1,8 @@
 vim.g.have_nerd_font = true
 
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 vim.opt.showmode = false
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.guicursor = ""
 vim.opt.cursorline = true
@@ -40,9 +40,9 @@ vim.opt.updatetime = 50
 
 vim.opt.list = true
 vim.opt.listchars = {
-    eol = "↴",
-    tab = "▎_",
-    trail = "•",
-    extends = "❯",
-    precedes = "❮",
+	eol = "¬",
+	tab = "▸ ",
+	trail = "•",
+	extends = "❯",
+	precedes = "❮",
 }
