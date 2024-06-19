@@ -15,6 +15,7 @@ return {
         dependencies = {
             {
                 'L3MON4D3/LuaSnip',
+                run = "make install_jsregexp",
                 dependencies = {
                     'hrsh7th/cmp-buffer',
                     'rafamadriz/friendly-snippets',
@@ -37,6 +38,8 @@ return {
             vim.keymap.set({"i", "s"}, "<Tab>", function()
                 if luasnip.choice_active() then
                     return "<cmd>lua require'luasnip'.jump(1)<Cr>"
+                elseif luasnip.locally_jumpable(1) then
+                    return "<cmd>lua require'luasnip'.jump(1)<Cr>"
                 else
                     return "<Tab>"
                 end
@@ -48,6 +51,8 @@ return {
             vim.keymap.set({"i", "s"}, "<S-Tab>", function()
                 if luasnip.choice_active() then
                     return "<cmd>lua require'luasnip'.jump(-1)<Cr>"
+                elseif luasnip.locally_jumpable(-1) then
+                    return "<cmd>lua require'luasnip'.jump(1)<Cr>"
                 else
                     return "<S-Tab>"
                 end
