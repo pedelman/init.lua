@@ -6,7 +6,9 @@ return {
 			options = {
 				-- ... your lualine config
 				theme = "tokyonight",
-				-- ... your lualine config
+			},
+			sections = {
+				lualine_b = { { "FugitiveHead", icon = "" } },
 			},
 		})
 	end,
