@@ -153,6 +153,7 @@ return {
 					"gopls",
 					"terraformls",
 					"bashls",
+					"yamlls",
 				},
 				handlers = {
 					function(server_name)
@@ -200,6 +201,10 @@ return {
 
 					bashls = function()
 						lspconfig.bashls.setup({})
+					end,
+
+					yamlls = function()
+						lspconfig.yamlls.setup({})
 					end,
 				},
 			})
