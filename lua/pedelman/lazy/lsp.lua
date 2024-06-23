@@ -154,6 +154,10 @@ return {
 					"terraformls",
 					"bashls",
 					"yamlls",
+					"tsserver",
+					"html",
+					"cssls",
+					"tailwindcss",
 				},
 				handlers = {
 					function(server_name)
@@ -197,6 +201,22 @@ return {
 
 					terraformls = function()
 						lspconfig.terraformls.setup({})
+					end,
+
+					tsserver = function()
+						lspconfig.tsserver.setup({})
+					end,
+
+					html = function()
+						lspconfig.html.setup({})
+					end,
+
+					cssls = function()
+						lspconfig.cssls.setup({})
+					end,
+
+					tailwindcss = function()
+						lspconfig.tailwindcss.setup({})
 					end,
 
 					bashls = function()
