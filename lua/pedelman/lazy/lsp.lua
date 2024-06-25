@@ -149,15 +149,17 @@ return {
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
-					"gopls",
-					"terraformls",
 					"bashls",
-					"yamlls",
-					"tsserver",
-					"html",
 					"cssls",
+					"eslint",
+					"gopls",
+					"html",
+					"jsonls",
+					"lua_ls",
 					"tailwindcss",
+					"terraformls",
+					"tsserver",
+					"yamlls",
 				},
 				handlers = {
 					function(server_name)
@@ -225,6 +227,14 @@ return {
 
 					yamlls = function()
 						lspconfig.yamlls.setup({})
+					end,
+
+					jsonls = function()
+						lspconfig.jsonls.setup({})
+					end,
+
+					eslint = function()
+						lspconfig.eslint.setup({})
 					end,
 				},
 			})
