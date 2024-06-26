@@ -1,5 +1,9 @@
 return {
 	{
+		"onsails/lspkind.nvim",
+		config = false,
+	},
+	{
 		"VonHeikemen/lsp-zero.nvim",
 		lazy = true,
 		config = false,
@@ -34,6 +38,7 @@ return {
 			-- And you can configure cmp even more, if you want to.
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			local lspkind = require("lspkind")
 
 			vim.keymap.set({ "i", "s" }, "<Tab>", function()
 				if luasnip.choice_active() then
@@ -77,6 +82,14 @@ return {
 					{ name = "buffer" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp" },
+				},
+				formatting = {
+					expandable_indicator = true,
+					format = lspkind.cmp_format({
+						mode = "symbol_text",
+						maxwidth = 50,
+						ellipsis_char = "...",
+					}),
 				},
 			})
 		end,
