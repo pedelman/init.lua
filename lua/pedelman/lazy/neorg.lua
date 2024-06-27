@@ -1,3 +1,6 @@
+--
+-- Note, in order to get install to work, I needed to run ":Neorg sync-parsers"
+--
 return {
 	{
 		"nvim-neorg/neorg",
